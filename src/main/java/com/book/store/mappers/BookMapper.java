@@ -19,8 +19,13 @@ public interface BookMapper {
     @Named("mapWithouChapters")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "chapters", ignore = true)
+    @Mapping(target = "nbrChapters", expression = "java(getNbrOfChapters(book))")
     BookDto map(Book book);
 
     @IterableMapping(qualifiedByName = "mapWithouChapters")
     List<BookDto> map(List<Book> books);
+
+    default int getNbrOfChapters(Book book) {
+        return (int)book.getChapters().stream().count();
+    }
 }

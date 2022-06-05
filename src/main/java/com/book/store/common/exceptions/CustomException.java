@@ -1,4 +1,4 @@
-package com.book.store.exceptions;
+package com.book.store.common.exceptions;
 
 
 public class CustomException extends RuntimeException{

@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +21,9 @@ public class Book {
     private long id;
     private String name;
     private String writer;
+    @Enumerated(EnumType.STRING)
+    private Category category;
+    private Boolean isForSale;
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Chapter> chapters = new ArrayList<Chapter>();
 
@@ -45,6 +50,22 @@ public class Book {
 
     public void setWriter(String writer) {
         this.writer = writer;
+    }
+
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Boolean getIsForSale() {
+        return this.isForSale;
+    }
+
+    public void setIsForSale(Boolean isForSale) {
+        this.isForSale = isForSale;
     }
 
     public List<Chapter> getChapters() {
