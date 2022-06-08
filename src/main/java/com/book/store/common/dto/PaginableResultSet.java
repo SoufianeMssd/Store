@@ -54,8 +54,8 @@ public final class PaginableResultSet<T, R> {
 	 * @param totalPages
 	 * @param totalItems
 	 * @param content
-	 * @param <T>
-	 * @param <R>
+	 * @param <T> : source entity
+	 * @param <R> : source dto 
 	 * @return
 	 */
 	public static <T, R> PaginableResultSet<T, R> of(int pageSize, int pageNumber, int totalPages,

@@ -29,6 +29,8 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public void create(Book book) {
+        if(book == null)
+            throw new CustomException("Book shouldn't be null");
         book.getChapters().forEach(chapter -> chapter.setBook(book));
         bookRepository.save(book);
     }
