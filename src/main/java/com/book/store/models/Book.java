@@ -46,28 +46,31 @@ public class Book {
     )
     private List<Chapter> chapters = new ArrayList();
 
+    public Book() {
+    }
+
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public String getWriter() {
-        return this.writer;
+        return writer;
     }
 
     public Category getCategory() {
-        return this.category;
+        return category;
     }
 
     public Boolean getIsForSale() {
-        return this.isForSale;
+        return isForSale;
     }
 
     public List<Chapter> getChapters() {
-        return this.chapters;
+        return chapters;
     }
 
     public void setId(long id) {
@@ -99,40 +102,9 @@ public class Book {
             return true;
         } else if (!(o instanceof Book)) {
             return false;
-        } else {
-            Book other = (Book)o;
-            if (!other.canEqual(this)) {
-                return false;
-            } else if (this.getId() != other.getId()) {
-                return false;
-            } else {
-                Object this$name = this.getName();
-                Object other$name = other.getName();
-                if (this$name == null) {
-                    if (other$name != null) {
-                        return false;
-                    }
-                } else if (!this$name.equals(other$name)) {
-                    return false;
-                }
-
-                Object this$writer = this.getWriter();
-                Object other$writer = other.getWriter();
-                if (this$writer == null) {
-                    if (other$writer != null) {
-                        return false;
-                    }
-                } else if (!this$writer.equals(other$writer)) {
-                    return false;
-                }
-
-                return true;
-            }
         }
-    }
-
-    protected boolean canEqual(Object other) {
-        return other instanceof Book;
+        Book book = (Book) o;
+        return Objects.equals(name, book.getName());
     }
 
     public int hashCode() {
@@ -140,9 +112,6 @@ public class Book {
     }
 
     public String toString() {
-        return "Book(id=" + this.getId() + ", name=" + this.getName() + ", writer=" + this.getWriter() + ")";
-    }
-
-    public Book() {
+        return "Book(id=" + getId() + ", name=" + getName() + ", writer=" + getWriter() + ")";
     }
 }

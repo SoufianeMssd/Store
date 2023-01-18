@@ -28,24 +28,27 @@ public class Chapter {
     )
     private Book book;
 
+    public Chapter() {
+    }
+
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getStart() {
-        return this.start;
+        return start;
     }
 
     public int getEnd() {
-        return this.end;
+        return end;
     }
 
     public Book getBook() {
-        return this.book;
+        return book;
     }
 
     public void setId(long id) {
@@ -73,44 +76,9 @@ public class Chapter {
             return true;
         } else if (!(o instanceof Chapter)) {
             return false;
-        } else {
-            Chapter other = (Chapter)o;
-            if (!other.canEqual(this)) {
-                return false;
-            } else if (this.getId() != other.getId()) {
-                return false;
-            } else if (this.getStart() != other.getStart()) {
-                return false;
-            } else if (this.getEnd() != other.getEnd()) {
-                return false;
-            } else {
-                Object this$name = this.getName();
-                Object other$name = other.getName();
-                if (this$name == null) {
-                    if (other$name != null) {
-                        return false;
-                    }
-                } else if (!this$name.equals(other$name)) {
-                    return false;
-                }
-
-                Object this$book = this.getBook();
-                Object other$book = other.getBook();
-                if (this$book == null) {
-                    if (other$book != null) {
-                        return false;
-                    }
-                } else if (!this$book.equals(other$book)) {
-                    return false;
-                }
-
-                return true;
-            }
         }
-    }
-
-    protected boolean canEqual(Object other) {
-        return other instanceof Chapter;
+        Chapter chapter = (Chapter) o;
+        return Objects.equals(name, chapter.getName());
     }
 
     public int hashCode() {
@@ -118,9 +86,7 @@ public class Chapter {
     }
 
     public String toString() {
-        return "Chapter(id=" + this.getId() + ", name=" + this.getName() + ", start=" + this.getStart() + ", end=" + this.getEnd() + ", book=" + this.getBook() + ")";
-    }
-
-    public Chapter() {
+        return "Chapter(id=" + getId() + ", name=" + getName() +
+     ", start=" + getStart() + ", end=" + getEnd() + ", book=" + getBook() + ")";
     }
 }

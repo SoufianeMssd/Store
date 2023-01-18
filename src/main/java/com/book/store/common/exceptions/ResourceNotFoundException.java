@@ -15,10 +15,10 @@ public class ResourceNotFoundException extends RuntimeException {
     }
 
     public Date getTimestamp() {
-        return this.timestamp;
+        return timestamp;
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 }

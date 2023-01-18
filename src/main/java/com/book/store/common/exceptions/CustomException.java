@@ -9,7 +9,7 @@ public class CustomException extends RuntimeException {
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 
     public void setMessage(String message) {

@@ -8,7 +8,7 @@ public class Filter {
     }
 
     public int getPage() {
-        return this.page;
+        return page;
     }
 
     public void setPage(int page) {
@@ -16,7 +16,7 @@ public class Filter {
     }
 
     public int getSize() {
-        return this.size;
+        return size;
     }
 
     public void setSize(int size) {
@@ -24,6 +24,6 @@ public class Filter {
     }
 
     public String toString() {
-        return "{ page='" + this.getPage() + "'" + ", size='" + this.getSize() + "'" + "}";
+        return "{ page='" + getPage() + "'" + ", size='" + getSize() + "'" + "}";
     }
 }

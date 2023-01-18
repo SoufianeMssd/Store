@@ -12,7 +12,7 @@ public class BookFilter extends Filter {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -20,7 +20,7 @@ public class BookFilter extends Filter {
     }
 
     public String getWriter() {
-        return this.writer;
+        return writer;
     }
 
     public void setWriter(String writer) {
@@ -28,7 +28,7 @@ public class BookFilter extends Filter {
     }
 
     public Category getCategory() {
-        return this.category;
+        return category;
     }
 
     public void setCategory(Category category) {

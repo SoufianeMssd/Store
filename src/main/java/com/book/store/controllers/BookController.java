@@ -41,10 +41,10 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody @Valid BookDto bookDto) {
-        Book book = this.bookMapper.map(bookDto);
-        this.logger.info("book : {}", book);
-        this.bookService.create(book);
-        this.kafkaTemplate.send("NewBook", "new book create with name : " + book.getName() + " by : " + book.getWriter());
+        Book book = bookMapper.map(bookDto);
+        logger.info("book : {}", book);
+        bookService.create(book);
+        kafkaTemplate.send(TOPIC, "new book create with name : " + book.getName() + " by : " + book.getWriter());
         return ResponseEntity.ok().build();
     }
 
@@ -54,8 +54,8 @@ public class BookController {
         book.setCategory(Category.POLITICS);
         book.setName("my book");
         book.setWriter("soufiane");
-        this.logger.info("to string book : {}", book.toString());
-        BookDto bookDto = this.bookMapper.map(this.bookService.findById(id));
+        logger.info("to string book : {}", book.toString());
+        BookDto bookDto = bookMapper.map(bookService.findById(id));
         return ResponseEntity.ok(bookDto);
     }
 
@@ -63,52 +63,52 @@ public class BookController {
         path = {"/{bookName}/name"}
     )
     public ResponseEntity<List<BookDto>> getBookByName(@PathVariable String bookName) {
-        List<Book> books = this.bookService.findByName(bookName);
-        List<BookDto> bookDtos = this.bookMapper.map(books);
-        this.logger.info("list of books by name: {}", bookDtos);
+        List<Book> books = bookService.findByName(bookName);
+        List<BookDto> bookDtos = bookMapper.map(books);
+        logger.info("list of books by name: {}", bookDtos);
         return ResponseEntity.ok(bookDtos);
     }
 
     @GetMapping
     public ResponseEntity<List<BookDto>> getBookByWriter(@RequestParam String writer) {
-        List<Book> books = this.bookService.findByWriter(writer);
-        List<BookDto> bookDtos = this.bookMapper.map(books);
-        this.logger.info("list of books by writer: {}", bookDtos);
+        List<Book> books = bookService.findByWriter(writer);
+        List<BookDto> bookDtos = bookMapper.map(books);
+        logger.info("list of books by writer: {}", bookDtos);
         return ResponseEntity.ok(bookDtos);
     }
 
     @GetMapping({"/all"})
     public ResponseEntity<List<BookDto>> getAllBook() {
-        List<Book> books = this.bookService.findAll();
-        List<BookDto> bookDtos = this.bookMapper.map(books);
-        this.logger.info("list of all books : {}", bookDtos);
+        List<Book> books = bookService.findAll();
+        List<BookDto> bookDtos = bookMapper.map(books);
+        logger.info("list of all books : {}", bookDtos);
         return ResponseEntity.ok(bookDtos);
     }
 
     @GetMapping({"/politics"})
     public ResponseEntity<List<BookDto>> getAllPoliticBooks() {
-        List<Book> books = this.bookService.findAllPoliticBooks();
-        List<BookDto> bookDtos = this.bookMapper.map(books);
-        this.logger.info("list of all politic books : {}", bookDtos);
+        List<Book> books = bookService.findAllPoliticBooks();
+        List<BookDto> bookDtos = bookMapper.map(books);
+        logger.info("list of all politic books : {}", bookDtos);
         return ResponseEntity.ok(bookDtos);
     }
 
     @GetMapping({"/filter"})
     public ResponseEntity<PaginableResultSet<Book, BookDto>> getBookByCriteria(@RequestBody BookFilter bookFilter) {
-        Page<Book> page = this.bookService.findByCriteria(bookFilter);
-        BookMapper var10001 = this.bookMapper;
+        Page<Book> page = bookService.findByCriteria(bookFilter);
+        BookMapper var10001 = bookMapper;
         var10001.getClass();
         return ResponseEntity.ok(PaginableResultSet.of(page, var10001::map));
     }
 
     @DeleteMapping({"/{id}"})
     public ResponseEntity<Void> delete(@PathVariable long id) {
-        this.bookService.delete(id);
+        bookService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping({"/first"})
     public ResponseEntity<List<BookChapterFirst>> getBookAndFirstChapter() {
-        return ResponseEntity.ok(this.bookService.findAllAndFirstChapter());
+        return ResponseEntity.ok(bookService.findAllAndFirstChapter());
     }
 }

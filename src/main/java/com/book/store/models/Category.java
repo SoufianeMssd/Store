@@ -12,6 +12,6 @@ public enum Category {
     }
 
     public String toString() {
-        return "Category{label='" + this.label + '\'' + '}';
+        return "Category{label='" + label + '\'' + '}';
     }
 }

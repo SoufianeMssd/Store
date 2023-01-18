@@ -19,7 +19,7 @@ public class BookDto {
     }
 
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(long id) {
@@ -27,7 +27,7 @@ public class BookDto {
     }
 
     public int getNbrChapters() {
-        return this.nbrChapters;
+        return nbrChapters;
     }
 
     public void setNbrChapters(int nbrChapters) {
@@ -35,7 +35,7 @@ public class BookDto {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -43,7 +43,7 @@ public class BookDto {
     }
 
     public String getWriter() {
-        return this.writer;
+        return writer;
     }
 
     public void setWriter(String writer) {
@@ -51,7 +51,7 @@ public class BookDto {
     }
 
     public Boolean getIsForSale() {
-        return this.isForSale;
+        return isForSale;
     }
 
     public void setIsForSale(Boolean isForSale) {
@@ -59,7 +59,7 @@ public class BookDto {
     }
 
     public Category getCategory() {
-        return this.category;
+        return category;
     }
 
     public void setCategory(Category category) {
@@ -67,7 +67,7 @@ public class BookDto {
     }
 
     public List<Chapter> getChapters() {
-        return this.chapters;
+        return chapters;
     }
 
     public void setChapters(List<Chapter> chapters) {
@@ -75,6 +75,6 @@ public class BookDto {
     }
 
     public String toString() {
-        return "{ id='" + this.getId() + "'" + ", name='" + this.getName() + "'" + ", writer='" + this.getWriter() + "'" + ", chapters='" + this.getChapters() + "'" + "}";
+        return "{ id='" + getId() + "'" + ", name='" + getName() + "'" + ", writer='" + getWriter() + "'" + ", chapters='" + getChapters() + "'" + "}";
     }
 }
